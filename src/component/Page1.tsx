@@ -1,9 +1,10 @@
+import { ethers } from "ethers";
 import * as React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { bzk } from "./bzk";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
 
-const monthlyFee = 25;
+const monthlyFee: number = 25;
 
 interface IState {
   addrTo: string;
@@ -43,6 +44,17 @@ export default class Page1 extends React.PureComponent<{}, IState> {
     }
   }
 
+  checkAddress() {
+    let addrFromElement = document.getElementById("from");
+    let addrFrom = (addrFromElement as HTMLInputElement).value;
+    if (ethers.utils.isAddress(addrFrom) === false) {
+      return ((addrFromElement as HTMLElement).className =
+        "form-control border border-danger");
+    } else {
+      (addrFromElement as HTMLElement).className = "form-control";
+    }
+  }
+
   render() {
     return (
       <div style={{ margin: "10em" }}>
@@ -57,6 +69,7 @@ export default class Page1 extends React.PureComponent<{}, IState> {
               placeholder="0x"
               aria-label="From Address"
               id="from"
+              onInput={this.checkAddress}
             />
           </InputGroup>
 
@@ -92,9 +105,9 @@ export default class Page1 extends React.PureComponent<{}, IState> {
             </InputGroup>
           </div>
 
-          <div id="errInfo" />
-
-          <Button onClick={bzk}>Pay</Button>
+          <Button type="submit" onClick={bzk}>
+            Pay
+          </Button>
         </div>
         <hr />
       </div>
