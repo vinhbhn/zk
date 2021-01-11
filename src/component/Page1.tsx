@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import * as React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { bzk } from "./bzk";
+import { getAccount } from "./metamask";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
 
 const monthlyFee: number = 25;
@@ -48,8 +49,8 @@ export default class Page1 extends React.PureComponent<{}, IState> {
     let addrFromElement = document.getElementById("from");
     let addrFrom = (addrFromElement as HTMLInputElement).value;
     if (ethers.utils.isAddress(addrFrom) === false) {
-      return ((addrFromElement as HTMLElement).className =
-        "form-control border border-danger");
+      (addrFromElement as HTMLElement).className =
+        "form-control border border-danger";
     } else {
       (addrFromElement as HTMLElement).className = "form-control";
     }
@@ -71,6 +72,7 @@ export default class Page1 extends React.PureComponent<{}, IState> {
               id="from"
               onInput={this.checkAddress}
             />
+            <Button onClick={getAccount}>Get Account</Button>
           </InputGroup>
 
           <InputGroup className="mb-3">
