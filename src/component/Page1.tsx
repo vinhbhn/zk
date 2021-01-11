@@ -1,13 +1,18 @@
-import React from "react";
+import * as React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { bzk } from "./bzk";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
 
 const monthlyFee = 25;
 
-export default class Page1 extends React.Component {
-  constructor() {
-    super();
+interface IState {
+  addrTo: string;
+  amount: string;
+}
+
+export default class Page1 extends React.PureComponent<{}, IState> {
+  constructor(props: {}) {
+    super(props);
     this.state = {
       addrTo: "migoi.eth",
       amount: monthlyFee.toString(),
@@ -15,22 +20,23 @@ export default class Page1 extends React.Component {
     this.changeAmount = this.changeAmount.bind(this);
   }
 
-  priceFeed(tokenAddr) {
+  priceFeed(tokenAddr: string) {
     checkPriceFeed(tokenAddr)
-    .methods.latestRoundData().call()
-    .then((roundData) => {
+      .methods.latestRoundData()
+      .call()
+      .then((roundData: any[]) => {
         let price = Number(roundData[1]) / 100000000;
         let monthlyFeeAmount = monthlyFee / price;
         return this.setState({ amount: monthlyFeeAmount.toString() });
       })
-      .catch((err) => console.error(err));
-  };
+      .catch((err: any) => console.error(err));
+  }
 
   changeAmount() {
-    let token = document.getElementById("token").value;
-    if (token.toString() === "ETH") {
+    let token = (document.getElementById("token") as HTMLInputElement).value;
+    if (token === "ETH") {
       this.priceFeed(ethAddr);
-    } else if (token.toString() === "LINK") {
+    } else if (token === "LINK") {
       this.priceFeed(linkAddr);
     } else {
       this.setState({ amount: monthlyFee.toString() });

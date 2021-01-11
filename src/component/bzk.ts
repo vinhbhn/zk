@@ -1,13 +1,14 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { CheckoutManager } from "zksync-checkout";
 
 export const bzk = async () => {
-  let addrFrom = document.getElementById("from").value;
-  let amountElement = document.getElementById("amount").value;
-  let token = document.getElementById("token").value;
-  let errInfo = document.getElementById("errInfo");
+  let addrFrom = (document.getElementById("from") as HTMLInputElement).value;
+  let amountElement = (document.getElementById("amount") as HTMLInputElement)
+    .value;
+  let token = (document.getElementById("token") as HTMLInputElement).value;
+  let errInfo = document.getElementById("errInfo") as HTMLOutputElement;
 
-  const addrTo = "0x3e9c2ee838072b370567efc2df27602d776b341c";
+  const addrTo: string = "0x3e9c2ee838072b370567efc2df27602d776b341c";
 
   ethers.utils.isAddress(addrFrom) === true
     ? (errInfo.innerHTML = ``)
@@ -15,16 +16,16 @@ export const bzk = async () => {
       Check your Ethereum address.
       </Form.Text>`);
 
-  let amount = null;
+  let amount: BigNumber = BigNumber.from(0);
 
-  const tokenUnits = { ETH: 18, USDT: 6, DAI: 18, USDC: 6, LINK: 18 };
-  const unit = tokenUnits[token];
+  const tokenUnits: any = { ETH: 18, USDT: 6, DAI: 18, USDC: 6, LINK: 18 };
+  const unit: number = tokenUnits[token];
 
   if (unit && amountElement) {
     amount = ethers.utils.parseUnits(amountElement, unit);
   }
 
-  const manager = new CheckoutManager("mainnet");
+  const manager = new CheckoutManager("ropsten");
 
   if (ethers.utils.isAddress(addrFrom) === true && amount) {
     let from = ethers.utils.getAddress(addrFrom);

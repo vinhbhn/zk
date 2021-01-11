@@ -4,7 +4,7 @@ const web3 = new Web3(
   "https://mainnet.infura.io/v3/713ad71148b74747b97a4ce5ce51112f"
 );
 
-const aggregatorV3InterfaceABI = [
+const aggregatorV3InterfaceABI: any[] = [
   {
     inputs: [],
     name: "decimals",
@@ -54,12 +54,9 @@ const aggregatorV3InterfaceABI = [
   },
 ];
 
-export const ethAddr = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
-export const linkAddr = "0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c";
+export const ethAddr: string = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
+export const linkAddr: string = "0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c";
 
-export const checkPriceFeed = (tokenAddr) => {
-  return new web3.eth.Contract(
-    aggregatorV3InterfaceABI,
-    tokenAddr
-  );
-}
+export const checkPriceFeed = (tokenAddr: string) => {
+  return new web3.eth.Contract(aggregatorV3InterfaceABI, tokenAddr);
+};
