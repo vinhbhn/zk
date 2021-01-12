@@ -1,7 +1,7 @@
 import { BigNumber, ethers } from "ethers";
 import { CheckoutManager } from "zksync-checkout";
 
-export const bzk = async () => {
+export const zk = async () => {
   let addrFromElement = document.getElementById("from");
   let addrFrom = (addrFromElement as HTMLInputElement).value;
   let amountElement = (document.getElementById("amount") as HTMLInputElement)

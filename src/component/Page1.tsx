@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import * as React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { bzk } from "./bzk";
+import { zk } from "./zk";
 import { getAccount } from "./metamask";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
 
@@ -107,7 +107,7 @@ export default class Page1 extends React.PureComponent<{}, IState> {
             </InputGroup>
           </div>
 
-          <Button type="submit" onClick={bzk}>
+          <Button type="submit" onClick={zk}>
             Pay
           </Button>
         </div>
