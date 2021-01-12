@@ -5,13 +5,12 @@
 - Use ETH/USDT/DAI/USDC/LINK token to purchase membership monthly.
 - Based on zkSync Checkout
 - Using Chainlink price feeds
+- Confirm tx then set user to membership. (1/2)
 
 ## Todos
 
-- Get available tokens from zkSync API
-- Resolve ensName to address.
-- Bot check tx success then wait 10mins to set account to pro.
-- Performance optimized application
+- Resolve ENS name to address.
+- Performance optimized application.
 
 ## Caution
 

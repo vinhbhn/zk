@@ -5,7 +5,7 @@ import { zk } from "./zk";
 import { getAccount } from "./metamask";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
 
-const monthlyFee: number = 25;
+const monthlyFee: number = 5;
 
 interface IState {
   addrTo: string;
