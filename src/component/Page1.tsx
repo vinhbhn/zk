@@ -1,9 +1,9 @@
-import { ethers } from "ethers";
 import * as React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { zk } from "./zk";
 import { getAccount } from "./metamask";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
+import { checkAddress } from "./ens";
 
 const monthlyFee: number = 5;
 
@@ -45,17 +45,6 @@ export default class Page1 extends React.PureComponent<{}, IState> {
     }
   }
 
-  checkAddress() {
-    let addrFromElement = document.getElementById("from");
-    let addrFrom = (addrFromElement as HTMLInputElement).value;
-    if (ethers.utils.isAddress(addrFrom) === false) {
-      (addrFromElement as HTMLElement).className =
-        "form-control border border-danger";
-    } else {
-      (addrFromElement as HTMLElement).className = "form-control";
-    }
-  }
-
   render() {
     return (
       <div style={{ margin: "10em" }}>
@@ -67,10 +56,10 @@ export default class Page1 extends React.PureComponent<{}, IState> {
               <InputGroup.Text id="basic-addon3">From</InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
-              placeholder="0x"
+              placeholder="0x or name.eth"
               aria-label="From Address"
               id="from"
-              onInput={this.checkAddress}
+              onMouseLeave={checkAddress}
             />
             <Button onClick={getAccount}>Get Account</Button>
           </InputGroup>
