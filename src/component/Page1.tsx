@@ -1,9 +1,9 @@
 import * as React from "react";
+import { ethers } from "ethers";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { zk } from "./zk";
 import { getAccount } from "./metamask";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
-import { checkAddress } from "./ens";
 
 const monthlyFee: number = 5;
 
@@ -27,8 +27,8 @@ export default class Page1 extends React.PureComponent<{}, IState> {
       .methods.latestRoundData()
       .call()
       .then((roundData: any[]) => {
-        let price = Number(roundData[1]) / 100000000;
-        let monthlyFeeAmount = monthlyFee / price;
+        let price = roundData[1] / 100000000;
+        let monthlyFeeAmount = (monthlyFee / price).toFixed(6);
         return this.setState({ amount: monthlyFeeAmount.toString() });
       })
       .catch((err: any) => console.error(err));
@@ -42,6 +42,18 @@ export default class Page1 extends React.PureComponent<{}, IState> {
       this.priceFeed(linkAddr);
     } else {
       this.setState({ amount: monthlyFee.toString() });
+    }
+  }
+
+  checkAddress() {
+    let addrFromElement = document.getElementById("from");
+    let addrFrom: string = (addrFromElement as HTMLInputElement).value;
+
+    if (ethers.utils.isAddress(addrFrom) === true) {
+      (addrFromElement as HTMLElement).className = "form-control";
+    } else {
+      (addrFromElement as HTMLElement).className =
+        "form-control border border-danger";
     }
   }
 
@@ -59,7 +71,7 @@ export default class Page1 extends React.PureComponent<{}, IState> {
               placeholder="0x or name.eth"
               aria-label="From Address"
               id="from"
-              onMouseLeave={checkAddress}
+              onInput={this.checkAddress}
             />
             <Button onClick={getAccount}>Get Account</Button>
           </InputGroup>

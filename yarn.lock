@@ -1957,7 +1957,7 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
-"@testing-library/jest-dom@^5.11.8":
+"@testing-library/jest-dom@^5.11.9":
   version "5.11.9"
   resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.11.9.tgz#e6b3cd687021f89f261bd53cbe367041fbd3e975"
   integrity sha512-Mn2gnA9d1wStlAIT2NU8J15LNob0YFBVjs2aEQ3j8rsfRQo+lAs7/ui1i2TGaJjapLmuNPLTsrm+nPjmZDwpcQ==
@@ -5373,7 +5373,7 @@ ethereumjs-util@^6.0.0:
     ethjs-util "0.1.6"
     rlp "^2.2.3"
 
-ethers@^5.0.19:
+ethers@^5.0.25:
   version "5.0.25"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.0.25.tgz#584b17bf51ee37b21ca43026ad34b1212bf165f9"
   integrity sha512-KDbqCgTpOJADHZYVdBPOf/XD3o+BFhqbtXuIOvWhNTzGYrkIYgLIEoRQCFVZBtw+GvyV/poSXk0cBD+Rn0+/AA==
@@ -12031,7 +12031,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.5:
+typescript@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
   integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
@@ -13253,7 +13253,7 @@ zksync-crypto@^0.4.2:
   resolved "https://registry.yarnpkg.com/zksync-crypto/-/zksync-crypto-0.4.2.tgz#58dd8629ce222f14b3ad83f2c50a68fec6363974"
   integrity sha512-PQw0e7t80uP7c5LHonEh4dS4wGpK2TC4uYR/16jcDCaCS2wY/exF37hAOeQiskb0hnU2C6/jqtvBMbsMTzVh7Q==
 
-zksync@^0.8.1:
+zksync@^0.8.1, zksync@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/zksync/-/zksync-0.8.3.tgz#b06423c84ef03a36db8d961a072cf63d58f63aa8"
   integrity sha512-nGYQyN22F4yrmFgBiYVDQUx5YRnNmCNUfC3kfe3Q6pe3ie18LJ4CP5dXOTD2URVVZMiT7ow6kNxUQ8/yMAttug==

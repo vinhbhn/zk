@@ -1,11 +1,9 @@
 import { BigNumber, ethers } from "ethers";
 import { CheckoutManager } from "zksync-checkout";
-// import { confirmTx } from "./confirmTx";
 
 export const zk = async () => {
   try {
-    let addrFromElement = document.getElementById("from");
-    let addrFrom = (addrFromElement as HTMLInputElement).value;
+    let addrFrom = (document.getElementById("from") as HTMLInputElement).value;
     let amountElement = (document.getElementById("amount") as HTMLInputElement)
       .value;
     let token = (document.getElementById("token") as HTMLInputElement).value;
@@ -35,11 +33,11 @@ export const zk = async () => {
 
       const hashes = await manager.zkSyncBatchCheckout([transactions], token);
 
-      const txInfo = await manager.wait(hashes);
-      console.log(txInfo);
+      await manager.wait(hashes);
+      // console.log(txInfo);
+      // console.log(txInfo[0].hash);
 
       // confirm tx then set user to membership
-      // confirmTx(txInfo[0].hash);
     }
   } catch (err) {
     console.error(err);

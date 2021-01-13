@@ -9,7 +9,6 @@
 
 ## Todos
 
-- Resolve ENS name to address.
 - Performance optimized application.
 
 ## Caution
