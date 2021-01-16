@@ -4,11 +4,13 @@ import { CheckoutManager } from "zksync-checkout";
 
 export const zk = async () => {
   try {
-    let addrFromElement = document.getElementById("from");
-    let addrFrom = (addrFromElement as HTMLInputElement).value;
-    let amountElement = (document.getElementById("amount") as HTMLInputElement)
+    let addrFrom: string = (document.getElementById("from") as HTMLInputElement)
       .value;
-    let token = (document.getElementById("token") as HTMLInputElement).value;
+    let amountElement: string = (document.getElementById(
+      "amount"
+    ) as HTMLInputElement).value;
+    let token: string = (document.getElementById("token") as HTMLInputElement)
+      .value;
 
     const addrTo: string = "0x3e9c2ee838072b370567efc2df27602d776b341c";
 
@@ -20,7 +22,7 @@ export const zk = async () => {
       amount = ethers.utils.parseUnits(amountElement, unit);
     }
 
-    const manager = new CheckoutManager("rinkeby");
+    const manager = new CheckoutManager("ropsten");
 
     if (ethers.utils.isAddress(addrFrom) === true && amount) {
       let from = ethers.utils.getAddress(addrFrom);

@@ -1,9 +1,9 @@
 import * as React from "react";
+import { ethers } from "ethers";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { zk } from "./zk";
 import { getAccount } from "./metamask";
 import { ethAddr, linkAddr, checkPriceFeed } from "./PriceFeed";
-import { checkAddress } from "./ens";
 
 const monthlyFee: number = 5;
 
@@ -27,9 +27,9 @@ export default class Page1 extends React.PureComponent<{}, IState> {
       .methods.latestRoundData()
       .call()
       .then((roundData: any[]) => {
-        let price = Number(roundData[1]) / 100000000;
-        let monthlyFeeAmount = monthlyFee / price;
-        return this.setState({ amount: monthlyFeeAmount.toString() });
+        let price = roundData[1] / 100000000;
+        let monthlyFeeAmount = (monthlyFee / price).toFixed(6);
+        return this.setState({ amount: monthlyFeeAmount });
       })
       .catch((err: any) => console.error(err));
   }
@@ -45,6 +45,18 @@ export default class Page1 extends React.PureComponent<{}, IState> {
     }
   }
 
+  checkAddress() {
+    let addrFromElement = document.getElementById("from");
+    let addrFrom: string = (addrFromElement as HTMLInputElement).value;
+
+    if (ethers.utils.isAddress(addrFrom) === false) {
+      (addrFromElement as HTMLElement).className =
+        "form-control border border-danger";
+    } else {
+      (addrFromElement as HTMLElement).className = "form-control";
+    }
+  }
+
   render() {
     return (
       <div style={{ margin: "10em" }}>
@@ -56,10 +68,10 @@ export default class Page1 extends React.PureComponent<{}, IState> {
               <InputGroup.Text id="basic-addon3">From</InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
-              placeholder="0x or name.eth"
+              placeholder="0x"
               aria-label="From Address"
               id="from"
-              onMouseLeave={checkAddress}
+              onInput={this.checkAddress}
             />
             <Button onClick={getAccount}>Get Account</Button>
           </InputGroup>

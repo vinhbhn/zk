@@ -2,7 +2,7 @@ import * as zksync from "zksync";
 
 export const confirmTx = async (txHash: string) => {
   const syncWSProvider = await zksync.Provider.newWebsocketProvider(
-    "wss://rinkeby-api.zksync.io/jsrpc-ws"
+    "wss://ropsten-api.zksync.io/jsrpc-ws"
   );
 
   const receipt = await syncWSProvider.notifyTransaction(txHash, "VERIFY");
