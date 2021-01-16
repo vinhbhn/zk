@@ -3,8 +3,8 @@
 ## Features
 
 - Use ETH/USDT/DAI/USDC/LINK token to purchase membership monthly.
-- Based on zkSync Checkout
-- Using Chainlink price feeds
+- Based on zkSync Checkout.
+- Using Chainlink price feeds.
 - Confirm tx then set user to membership. (1/2)
 
 ## Todos

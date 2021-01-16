@@ -3,10 +3,13 @@ import { CheckoutManager } from "zksync-checkout";
 
 export const zk = async () => {
   try {
-    let addrFrom = (document.getElementById("from") as HTMLInputElement).value;
-    let amountElement = (document.getElementById("amount") as HTMLInputElement)
+    let addrFrom: string = (document.getElementById("from") as HTMLInputElement)
       .value;
-    let token = (document.getElementById("token") as HTMLInputElement).value;
+    let amountElement: string = (document.getElementById(
+      "amount"
+    ) as HTMLInputElement).value;
+    let token: string = (document.getElementById("token") as HTMLInputElement)
+      .value;
 
     const addrTo: string = "0x3e9c2ee838072b370567efc2df27602d776b341c";
 
@@ -33,9 +36,9 @@ export const zk = async () => {
 
       const hashes = await manager.zkSyncBatchCheckout([transactions], token);
 
-      await manager.wait(hashes);
-      // console.log(txInfo);
-      // console.log(txInfo[0].hash);
+      const txInfo = await manager.wait(hashes);
+      console.log(txInfo);
+      console.log(txInfo[0].hash);
 
       // confirm tx then set user to membership
     }

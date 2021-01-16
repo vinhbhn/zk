@@ -49,11 +49,11 @@ export default class Page1 extends React.PureComponent<{}, IState> {
     let addrFromElement = document.getElementById("from");
     let addrFrom: string = (addrFromElement as HTMLInputElement).value;
 
-    if (ethers.utils.isAddress(addrFrom) === true) {
-      (addrFromElement as HTMLElement).className = "form-control";
-    } else {
+    if (ethers.utils.isAddress(addrFrom) === false) {
       (addrFromElement as HTMLElement).className =
         "form-control border border-danger";
+    } else {
+      (addrFromElement as HTMLElement).className = "form-control";
     }
   }
 
@@ -68,7 +68,7 @@ export default class Page1 extends React.PureComponent<{}, IState> {
               <InputGroup.Text id="basic-addon3">From</InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
-              placeholder="0x or name.eth"
+              placeholder="0x"
               aria-label="From Address"
               id="from"
               onInput={this.checkAddress}
