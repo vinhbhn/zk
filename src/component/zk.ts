@@ -1,5 +1,6 @@
 import { BigNumber, ethers } from "ethers";
 import { CheckoutManager } from "zksync-checkout";
+import { confirmTx } from "./confirmTx";
 
 export const zk = async () => {
   try {
@@ -21,7 +22,7 @@ export const zk = async () => {
       amount = ethers.utils.parseUnits(amountElement, unit);
     }
 
-    const manager = new CheckoutManager("rinkeby");
+    const manager = new CheckoutManager("mainnet");
 
     if (ethers.utils.isAddress(addrFrom) === true && amount) {
       let from = ethers.utils.getAddress(addrFrom);
@@ -40,7 +41,11 @@ export const zk = async () => {
       console.log(txInfo);
       console.log(txInfo[0].hash);
 
+      const txHash = txInfo[0].hash.substring(8);
+      console.log(txHash);
+
       // confirm tx then set user to membership
+      confirmTx(txHash);
     }
   } catch (err) {
     console.error(err);
