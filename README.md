@@ -1,5 +1,3 @@
-# MiGoi Membership Monthly Payment
-
 ## Features
 
 - Use ETH/USDT/DAI/USDC/LINK token to purchase membership monthly.
@@ -13,7 +11,7 @@
 
 ## Caution
 
-- Zksync not support Gnosis Safe.
+- Zksync doesn't support Gnosis Safe.
 
 ## Docs
 
