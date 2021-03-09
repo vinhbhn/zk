@@ -61,7 +61,6 @@ export default class Page1 extends React.PureComponent<{}, IState> {
     return (
       <div style={{ margin: '10em' }}>
         <hr />
-        <h5>Monthly Membership Payment</h5>
         <div style={{ padding: '0px 400px' }}>
           <InputGroup className='mb-3'>
             <InputGroup.Prepend>
