@@ -5732,7 +5732,7 @@ dotenv-expand@5.1.0:
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
   integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
 
-dotenv@8.2.0:
+dotenv@8.2.0, dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
@@ -14118,7 +14118,7 @@ zksync-crypto@^0.4.2:
   resolved "https://registry.yarnpkg.com/zksync-crypto/-/zksync-crypto-0.4.2.tgz#58dd8629ce222f14b3ad83f2c50a68fec6363974"
   integrity sha512-PQw0e7t80uP7c5LHonEh4dS4wGpK2TC4uYR/16jcDCaCS2wY/exF37hAOeQiskb0hnU2C6/jqtvBMbsMTzVh7Q==
 
-zksync@^0.8.1, zksync@^0.8.4:
+zksync@^0.8.1:
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/zksync/-/zksync-0.8.4.tgz#1d02cca4ca17aa09ede73944177baee10cc2ace9"
   integrity sha512-5jtyxYb4cTdB6cvA/9j40xJS0oKO1fmOx49BbXhNMo+03rvfJX0hSH9Wdu1Zh2HZT04OPIx6lZcUQlwT53YhZA==
