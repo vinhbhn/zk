@@ -1,18 +1,18 @@
-import { BigNumber, ethers } from "ethers";
-import { CheckoutManager } from "zksync-checkout";
-import { confirmTx } from "./confirmTx";
+import { BigNumber, ethers } from 'ethers';
+import { CheckoutManager } from 'zksync-checkout';
+// import { confirmTx } from './confirmTx';
 
 export const zk = async () => {
   try {
-    let addrFrom: string = (document.getElementById("from") as HTMLInputElement)
+    let addrFrom: string = (document.getElementById('from') as HTMLInputElement)
       .value;
     let amountElement: string = (document.getElementById(
-      "amount"
+      'amount'
     ) as HTMLInputElement).value;
-    let token: string = (document.getElementById("token") as HTMLInputElement)
+    let token: string = (document.getElementById('token') as HTMLInputElement)
       .value;
 
-    const addrTo: string = "0x3e9c2ee838072b370567efc2df27602d776b341c";
+    const addrTo: string = '0x3e9c2ee838072b370567efc2df27602d776b341c';
 
     let amount: BigNumber = BigNumber.from(0);
     const tokenUnits: any = { ETH: 18, USDT: 6, DAI: 18, USDC: 6, LINK: 18 };
@@ -22,7 +22,7 @@ export const zk = async () => {
       amount = ethers.utils.parseUnits(amountElement, unit);
     }
 
-    const manager = new CheckoutManager("mainnet");
+    const manager = new CheckoutManager('mainnet');
 
     if (ethers.utils.isAddress(addrFrom) === true && amount) {
       let from = ethers.utils.getAddress(addrFrom);
@@ -45,7 +45,7 @@ export const zk = async () => {
       console.log(txHash);
 
       // confirm tx then set user to membership
-      confirmTx(txHash);
+      // confirmTx(txHash);
     }
   } catch (err) {
     console.error(err);
